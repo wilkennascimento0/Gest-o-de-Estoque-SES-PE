@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inventário SES/PE - Solicitações </title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body>
+
+    <aside class="sidebar">
+    <div class="logo-area">
+        <img src="img/logo-pe.png" alt="Logo SES/PE" class="sidebar-logo">
+    </div>
+    <nav>
+            <button id="menuEstoque"><span class="material-icons">inventory_2</span> Estoque</button>
+            <button id="menuSolicitacoes" class="active"><span class="material-icons">assignment</span> Solicitações</button>
+            <button id="menuUsuarios"><span class="material-icons">group</span> Usuários</button>
+        </nav>
+        <div class="logout-area">
+            <button id="btnLogout"><span class="material-icons">logout</span> Sair</button>
+        </div>
+    </aside>
+
+    <main class="form">
+       <div class="card">
+        <h3>Registrar Nova Movimentação</h3>
+
+        <form id="movimentacaoForm" class="form-grid">
+            
+            <div class="form-grou">
+                <label for="item">Selecionar Item</label>
+                <select id="item" name="item" required>
+                    <option value="" disabled selected>Selecione o item</option>
+                    <option value="item1">Item 1</option>
+                    <option value="item2">Item 2</option>
+                    <option value="item3">Item 3</option>
+                </select>
+            </div>
+
+<div class="form-row">
+            <div class="form-group">
+                <label for="origem">Local de Origem</label>
+                <select id="origem" name="origem" required>
+                    <option value="" disabled selected>Origem</option>
+                    <option value="local1">Local 1</option>
+                    <option value="local2">Local 2</option>
+                    <option value="local3">Local 3</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="destino">Local de Destino</label>
+                <select id="destino" name="destino" required>
+                    <option value="" disabled selected>Destino</option>
+                    <option value="local1">Local 1</option>
+                    <option value="local2">Local 2</option>
+                    <option value="local3">Local 3</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group">
+                <label for="status">Status Pós-Movimentação</label>
+                <select id="status" name="status" required>
+                    <option value="" disabled selected>Em uso</option>
+                    <option value="em_uso">Em uso</option>
+                    <option value="manutencao">Manutenção</option>
+                    <option value="inativo">Inativo</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="tecnico">Técnico Responsável</label>
+                <input type="text" id="tecnico" name="tecnico" placeholder="Ex: João Silva" required>
+            </div>
+        </div>
+
+
+    <div class="form-group">
+        <label for="observacoes">Observações</label>
+        <input type="text" id="observacoes" name="observacoes" placeholder="Detalhes adicionais sobre esta movimentação...">
+    </div>
+
+    <button type="submit">Registrar Movimentação</button>
+
+    </main>
+
+    <script type="module" src="js/controllers/DashboardController.js"></script>
+</body>
+</html>

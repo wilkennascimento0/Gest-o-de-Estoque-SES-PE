@@ -1,0 +1,415 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f7f6;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    color: #333;
+}
+
+.container {
+    display: flex;
+    flex-direction: column; /* Para empilhar os cards caso ambos fiquem visíveis por um erro */
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 400px;
+    padding: 20px;
+}
+
+.card {
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    box-sizing: border-box;
+    text-align: center;
+    margin-bottom: 20px; /* Espaço entre cards se houver mais de um */
+}
+
+.card h1 {
+    color: #0056b3; /* Cor institucional da SES/PE, talvez? */
+    margin-bottom: 10px;
+}
+
+.card h2 {
+    color: #007bff;
+    margin-top: 0;
+    margin-bottom: 25px;
+}
+
+.input-group {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+.input-group input[type="email"],
+.input-group input[type="password"],
+.input-group input[type="text"] {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+    box-sizing: border-box;
+    font-size: 16px;
+}
+
+button {
+    background-color: #007bff;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    width: 100%;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+.card p {
+    margin-top: 25px;
+    font-size: 14px;
+}
+
+.card p a {
+    color: #007bff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.card p a:hover {
+    text-decoration: underline;
+}
+
+/* Utilitário para esconder elementos */
+.hidden {
+    display: none;
+}
+
+/* Estilo para mensagens de toast */
+.toast {
+    visibility: hidden; /* Oculto por padrão */
+    min-width: 250px; /* Largura mínima */
+    background-color: #333; /* Cor de fundo escura */
+    color: #fff; /* Texto branco */
+    text-align: center; /* Centralizar texto */
+    border-radius: 2px; /* Cantos arredondados */
+    padding: 16px; /* Espaçamento */
+    position: fixed; /* Fixado na tela */
+    z-index: 1; /* Acima de outros elementos */
+    left: 50%; /* Centralizar horizontalmente */
+    bottom: 30px; /* 30px do fundo */
+    transform: translateX(-50%); /* Ajuste para centralizar */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.toast.show {
+    visibility: visible; /* Mostrar o toast */
+    -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+    animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+
+/* Animações */
+@-webkit-keyframes fadein {
+    from {bottom: 0; opacity: 0;}
+    to {bottom: 30px; opacity: 1;}
+}
+
+@keyframes fadein {
+    from {bottom: 0; opacity: 0;}
+    to {bottom: 30px; opacity: 1;}
+}
+
+@-webkit-keyframes fadeout {
+    from {bottom: 30px; opacity: 1;}
+    to {bottom: 0; opacity: 0;}
+}
+
+@keyframes fadeout {
+    from {bottom: 30px; opacity: 1;}
+    to {bottom: 0; opacity: 0;}
+}
+/* --- ESTILOS DO DASHBOARD --- */
+
+/* Layout Principal: Sidebar fixa na esquerda, conteúdo na direita */
+body {
+    /* O body anterior tinha display:flex centralizado, vamos resetar para o dashboard */
+    display: block; 
+}
+
+/* Se for a página de login, mantemos centralizado (ajuste fino) */
+body:has(.login-card) {
+    display: flex;
+}
+
+/* --- BARRA LATERAL (SIDEBAR) REFORMULADA --- */
+
+.sidebar {
+    width: 250px;
+    height: 100vh;
+    background-color: #424c78; /* Azul SES/PE */
+    color: rgb(255, 255, 255);
+    position: fixed;
+    left: 0;
+    top: 0;
+    display: flex;
+    flex-direction: column;
+    padding: 0; /* ZERE O PADDING AQUI para o cabeçalho encostar nas bordas */
+    box-sizing: border-box;
+}
+
+/* O Cabeçalho Branco no topo */
+/* --- AJUSTE FINO DA BARRA LATERAL --- */
+
+/* --- AJUSTE FINAL DA LOGO NA SIDEBAR --- */
+
+/* --- AJUSTE "NA RÉGUA" (FINAL) --- */
+
+.logo-area {
+    background-color: white;
+    width: 100%;
+    /* Define uma altura fixa para termos controle total */
+    height: 110px; 
+    
+    /* TRUQUE PARA A BORDA AMARELA (TOPO):
+       Adicionei padding-top para empurrar a logo um pouco para baixo.
+       Assim a borda de cima fica visualmente igual à de baixo. */
+    padding-top: 10px; 
+    
+    box-sizing: border-box;
+    border-bottom: 4px solid #ffe8a9;
+    
+    /* Centralização e Corte */
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    overflow: hidden; 
+    user-select: none;
+}
+
+.sidebar-logo {
+    /* Altura base: ocupa quase toda a altura disponível da caixa */
+    height: 90%; 
+    width: auto;
+    
+    /* O ZOOM PARA A ÁREA AZUL:
+       Aumentei para 1.5 (150%). Isso vai fazer a logo crescer para os lados
+       e ocupar aquele espaço branco que você marcou em azul. */
+    transform: scale(1.1); 
+    
+    /* Garante nitidez */
+    object-fit: contain;
+}
+
+/* O Menu de botões */
+.sidebar nav {
+    margin-top: 20px;
+    padding: 0 20px; /* Adicionamos o espaçamento lateral aqui, já que tiramos da sidebar geral */
+    flex: 1;
+}
+
+/* Botão de Sair */
+.logout-area {
+    padding: 20px; /* Espaçamento para o botão de sair também */
+}
+
+.sidebar button {
+    background: transparent;
+    text-align: left;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 5px;
+    opacity: 0.8;
+}
+
+.sidebar button:hover, .sidebar button.active {
+    background: rgba(255, 255, 255, 0.1);
+    opacity: 1;
+}
+
+.content {
+    margin-left: 250px; /* Mesma largura da sidebar */
+    padding: 20px;
+}
+
+.topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: white;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    margin-bottom: 20px;
+    
+}
+.topbar h3 {
+    color: #254484;
+    font-size: 25px; 
+    margin: 0;
+}
+
+.user-info{
+     color: #304d86;
+}
+
+.cards-container {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.card-resumo {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    flex: 1;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    text-align: center;
+}
+
+.card-resumo p {
+    font-size: 2em;
+    font-weight: bold;
+    color: #14308d;
+    margin: 5px 0 10px 0;
+}
+
+
+.workspace {
+    background: white;
+    color: #254484;
+    padding: 20px;
+    border-radius: 8px;
+    min-height: 300px;
+}
+/* --- ESTILOS DAS LOGOS --- */
+
+/* Ajuste no fundo da tela de login para destacar a logo colorida */
+body:has(.login-card) {
+    background-color: #e9ecef; /* Um cinza um pouco mais claro */
+}
+
+/* Logo na tela de Login */
+.login-logo {
+    display: block;
+    max-width: 250px; /* Largura máxima para não ficar gigante */
+    width: 100%; /* Tenta ocupar 100% até o limite de 250px */
+    height: auto; /* Mantém a proporção correta */
+    margin: 0 auto 20px auto; /* Centraliza e dá um espaço embaixo */
+}
+
+/* Logo na Barra Lateral do Dashboard */
+.sidebar-logo {
+    display: block;
+    max-width: 80%; /* Ocupa 80% da largura da barra lateral */
+    height: auto;
+    margin: 10px auto 30px auto; /* Centraliza e ajusta os espaços acima e abaixo */
+    /* DICA OPCIONAL: Como a barra lateral é azul escura e a logo é colorida, 
+       se achar que ficou difícil de ler, você pode descomentar a linha abaixo 
+       para criar um fundo branco suave atrás da logo:
+    */
+    /* background-color: rgba(255,255,255, 0.9); padding: 10px; border-radius: 8px; */
+}
+
+/* Ajuste na área da logo lateral para remover estilos antigos de texto */
+.logo-area {
+    text-align: center;
+    /* Removemos os estilos de h2 e p que não existem mais aqui */
+}
+
+
+
+   
+
+
+
+
+
+
+
+
+
+
+
+/* Geral do formulário */
+form {
+    
+    max-width: 900px;
+    margin: 0 auto;   
+    padding: 30px;   
+    background-color: #f9f9f9; 
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.form-row {
+    display: flex;
+    gap: 30px;       
+    margin-bottom: 15px;
+}
+
+
+.form-group {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Labels com padding/margem */
+.form-group label {
+    margin-bottom: 10px; /* espaço entre label e input */
+    padding-left: 4px;  /* leve padding interno */
+    font-weight: 500;   /* destaca a label */
+    font-size: 14px;
+}
+
+/* Inputs e selects */
+.form-group input,
+.form-group select {
+    padding: 8px 12px;       /* espaço interno */
+    border: 1px solid #ccc;  /* borda suave */
+    border-radius: 4px;
+    font-size: 14px;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+/* Efeito de foco */
+.form-group input:focus,
+.form-group select:focus {
+    border-color: #14308d;
+}
+
+
+button[type="submit"] {
+    padding: 10px 20px;
+    font-size: 15px;
+    font-weight: 600;
+    color: #fff;
+    background-color: #424f78;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background-color 0.2s;
+}
+
+button[type="submit"]:hover {
+    background-color: #005fcc;
+}
+

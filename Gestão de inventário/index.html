@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inventário SES/PE - Login</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="card login-card">
+    <img src="img/logo-pe.png" alt="Logo SES/PE" class="login-logo">
+    
+    <h1>Inventário SES/PE</h1>
+    <h2>Login</h2>
+    <form id="loginForm">
+                <div class="input-group">
+                    <label for="emailLogin">Email:</label>
+                    <input type="email" id="emailLogin" placeholder="seuemail@saude.pe.gov.br" required>
+                </div>
+                <div class="input-group">
+                    <label for="senhaLogin">Senha:</label>
+                    <input type="password" id="senhaLogin" placeholder="********" required>
+                </div>
+                <button type="submit" id="btnLogin">Entrar</button>
+            </form>
+            <p>Ainda não tem cadastro? <a href="#" id="linkCadastro">Cadastre-se aqui</a></p>
+        </div>
+
+        <div class="card cadastro-card hidden">
+            <h2>Cadastrar Novo Usuário</h2>
+            <form id="cadastroForm">
+                <div class="input-group">
+                    <label for="nomeCadastro">Nome:</label>
+                    <input type="text" id="nomeCadastro" placeholder="Seu Nome Completo" required>
+                </div>
+                <div class="input-group">
+                    <label for="emailCadastro">Email:</label>
+                    <input type="email" id="emailCadastro" placeholder="novoemail@saude.pe.gov.br" required>
+                </div>
+                 <div class="input-group">
+                    <label for="senhaCadastro">Senha:</label>
+                    <input type="password" id="senhaCadastro" placeholder="********" required>
+                </div>
+                <button type="submit" id="btnCadastrar">Cadastrar</button>
+            </form>
+            <p>Já tem cadastro? <a href="#" id="linkLogin">Faça login</a></p>
+        </div>
+    </div>
+
+    <script type="module" src="js/controllers/LoginController.js"></script>
+</body>
+</html>
